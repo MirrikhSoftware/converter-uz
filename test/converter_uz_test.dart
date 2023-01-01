@@ -3,12 +3,25 @@ import 'package:test/test.dart';
 
 void main() {
   group('A group of tests', () {
-    setUp(() {
-      // Additional setup goes here.
-    });
+    ConverterUz converter = ConverterUz.instance;
 
-    test('First Test', () {
-      // expect(awesome.isAwesome, isTrue);
-    });
+    test(
+      'Latin to Cyrillic',
+      () {
+        expect(
+          converter.toCyrillic(source: 'Assalomu alaykum!'),
+          'Ассалому алайкум!',
+        );
+      },
+    );
+    test(
+      'Cyrillic to Latin',
+      () {
+        expect(
+          converter.toLatin(source: 'Ассалому алайкум!'),
+          'Assalomu alaykum!',
+        );
+      },
+    );
   });
 }
